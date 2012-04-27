@@ -1,3 +1,4 @@
+; 1.1 The elementos of programming
 (define (square x)
   (* x x))
 
@@ -21,6 +22,8 @@
 
 (define (sqrt x)
   (sqrt-iter 1.0 x))
+
+; 1.2 Procedures and the Processes they Generate
 
 ; 1.2.2
 (define (fib n)
@@ -52,3 +55,28 @@
 	((= kind-of-coins 3) 10)
 	((= kind-of-coins 4) 25)
 	((= kind-of-coins 5) 50)))
+
+; 1.2.3 Order of Growth
+
+; 1.2.4 Exponentiation
+(define (expt b n)
+  (if (= n 0)
+      1
+      (* b (expt b (- n 1)))))
+
+(define (expt b n)
+  (expt-iter b n 1)
+
+(define (expt-iter b counter product)
+  (if (= counter 0)
+      product
+      (expt-iter b (- counter 1) (* b product))))
+
+(define (fast-expt b n)
+  (cond ((= n 0) 1)
+	((even? n) (square (fast-expt b (/ n 2))))
+	(else (* b (fast-expt b (- n 1))))))
+
+(define (even? n)
+  (= (remainder n 2) 0))
+
