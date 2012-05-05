@@ -73,3 +73,7 @@
 ((two inc) 7)
 
 
+(define four (add-church two two))
+
+((four inc) 0)
+4
