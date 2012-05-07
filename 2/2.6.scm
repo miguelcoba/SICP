@@ -36,7 +36,7 @@
 
 ; We can implement Church numeral addition by using the same approach. We'll take two Church numerals m and n. Instead of wrapping n in one extra function call, we'll wrap it in m extra calls.
 
-(define (add-church m n)
+(define (add m n)
    (lambda (f) (lambda (x) ((m f) ((n f) x)))))
 
 ; test
@@ -73,7 +73,7 @@
 ((two inc) 7)
 
 
-(define four (add-church two two))
+(define four (add two two))
 
 ((four inc) 0)
 4
