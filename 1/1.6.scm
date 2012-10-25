@@ -12,7 +12,11 @@
 	  (sqrt-iter (improve guess x)
 		     x)))
 
-; el procedimiento new-if no termina puesto que usa applicative-order y por
-; tanto evalúa todos los argumentos antes de aplicar el procedimiento.
-; Al evaluar el segundo argumento, se vuelve a llamar a sí misma, y por tanto
-; nunca termina.
+; The new-if procedure usa applicative-order evaluation meaning that
+; evaluate all the subexpressions before applying the operator to the
+; values of the arguments.
+; In the case of sqrt-iter, the evalutaion of the new-if evaluates the
+; three subexpressions, and when evaluation the third one:
+;  (sqrt-iter (improve guess x) x)
+; it call itself again, resulting in an infinite recursive non-ending
+; call to sqrt-iter. The method never returns a value.

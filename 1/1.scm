@@ -1,4 +1,4 @@
-; 1.1 The elementos of programming
+; 1.1 The elements of programming
 (define (square x)
   (* x x))
 
@@ -23,9 +23,12 @@
 (define (sqrt x)
   (sqrt-iter 1.0 x))
 
-; 1.2 Procedures and the Processes they Generate
+; 1.2 Procedures and the Processes They Generate
 
-; 1.2.2
+; 1.2.1 Linear Recursion and Iteration
+
+; 1.2.2 Tree Recursion
+
 (define (fib n)
   (cond ((= n 0) 0)
 	((= n 1) 1)
@@ -59,13 +62,14 @@
 ; 1.2.3 Order of Growth
 
 ; 1.2.4 Exponentiation
+
 (define (expt b n)
   (if (= n 0)
       1
       (* b (expt b (- n 1)))))
 
 (define (expt b n)
-  (expt-iter b n 1)
+  (expt-iter b n 1))
 
 (define (expt-iter b counter product)
   (if (= counter 0)
@@ -81,12 +85,14 @@
   (= (remainder n 2) 0))
 
 ; 1.2.5 Greatest Common Divisors
+
 (define (gcd a b)
   (if (= b 0)
       a
       (gcd b (remainder a b))))
 
 ; 1.2.6 Example: Testing for Primality
+
 (define (square x) (* x x))
 (define (smallest-divisor n)
   (find-divisor n 2))
@@ -270,6 +276,7 @@
   (fixed-point (lambda (y) (average y (/ x y))) 1.0))
 
 ; 1.3.4 Procedures as Returned Values
+
 (define (average-damp f)
   (lambda (x) (average x (f x))))
 

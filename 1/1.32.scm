@@ -23,7 +23,7 @@
   (sum identity a inc b))
 
 ; product-integers
-(define (sum-integers a b)
+(define (product-integers a b)
   (product identity a inc b))
 
 ; test

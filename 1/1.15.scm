@@ -5,7 +5,7 @@
       angle
       (p (sine (/ angle 3.0)))))
 
-; a) p es aplicado 5 veces
+; a) p is applied 5 times
 (sine 12.15)
 (p (sine (/ 12.15 3.0)))
 (p (sine 4.05))
