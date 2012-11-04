@@ -1,0 +1,8 @@
+(define (same-parity x . rest)
+  (define (filter l test)
+    (cond ((null? l) '())
+	  ((test (car l)) (cons (car l) (filter (cdr l) test)))
+	  (else (filter (cdr l) test))))
+  (if (odd? x)
+      (cons x (filter rest odd?))
+      (cons x (filter rest even?))))
