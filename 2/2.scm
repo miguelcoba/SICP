@@ -182,3 +182,24 @@
        items))
 
 (scale-list (list 1 2 3 4 5) 10)
+
+; 2.2.2 Hierarchical Structures
+
+(cons (list 1 2) (list 3 4))
+
+(define x (cons (list 1 2) (list 3 4)))
+
+(length x)
+
+(count-leaves x)
+
+(list x x)
+
+(count-leaves (list x x))
+
+(define (count-leaves x)
+  (cond ((null? x) 0)
+	((not (pair? x)) 1)
+	(else (+ (count-leaves (car x))
+		 (count-leaves (cdr x))))))
+	 
