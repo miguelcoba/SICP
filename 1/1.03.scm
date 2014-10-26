@@ -5,7 +5,7 @@
   (+ (square a) (square b)))
 
 (define (p a b c) 
-  (if (> a b ) 
+  (if (> a b) 
     (if (> b c)
       (sum-square a b) 
       (sum-square a c)) 
