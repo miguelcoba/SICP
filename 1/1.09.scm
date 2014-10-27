@@ -17,6 +17,7 @@
 (inc (inc 7))
 (inc 8)
 9
+; linear recursive process
 
 (define (+ a b)
   (if (= a 0)
@@ -33,3 +34,4 @@
 (+ (dec 1) (inc 8))
 (+ 0 9)
 9
+; linear iterative process

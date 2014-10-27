@@ -12,8 +12,8 @@
 	  (sqrt-iter (improve guess x)
 		     x)))
 
-; The new-if procedure usa applicative-order evaluation meaning that
-; evaluate all the subexpressions before applying the operator to the
+; The new-if procedure uses applicative-order evaluation meaning that
+; evaluate all the operands before applying the operator to the
 ; values of the arguments.
 ; In the case of sqrt-iter, the evalutaion of the new-if evaluates the
 ; three subexpressions, and when evaluation the third one:

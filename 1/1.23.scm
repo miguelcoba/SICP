@@ -19,7 +19,7 @@
 (define (prime? n)
   (= n (smallest-divisor n)))
 
-(define (runtime) (current-milliseconds))
+;(define (runtime) (current-milliseconds))
 
 (define (timed-prime-test n)
   (start-prime-test n (runtime)))
@@ -38,48 +38,52 @@
 (define (search-for-primes from how-many)
   (define (iter from how-many)
     (cond ((= how-many 0) (display "\n finished!\n"))
-	  ((even? from) (iter (+ from 1) how-many)); Si es par entonces no es primo y buscamos el siguiente impar
-	  ((timed-prime-test from) (iter (+ from 2) (- how-many 1))) ; Si es primo, es uno menos por buscar, y probamos el siguiente impar (un primo nunca es par)
-	  (else (iter (+ from 2) how-many)))) ; Buscamos el siguiente impar
+	  ((even? from) (iter (+ from 1) how-many)); If it is even, then is not prime and we search for the nex odd number
+	  ((timed-prime-test from) (iter (+ from 2) (- how-many 1))) ; If it is prime, it is one less to find and we try the next odd number (a prime is never even)
+	  (else (iter (+ from 2) how-many)))) ; Find next odd number
   (iter from how-many))
 
-; Resultados para 1e11 hasta 1e16
-racket@> (search-for-primes 100000000000 3)
+; Output
+(search-for-primes 1000 3)
 
-100000000003 *** 17
-100000000019 *** 29
-100000000057 *** 15
- finished!
-racket@> (search-for-primes 1000000000000 3)
-
-1000000000039 *** 49
-1000000000061 *** 59
-1000000000063 *** 60
- finished!
-racket@> (search-for-primes 10000000000000 3)
-
-10000000000037 *** 156
-10000000000051 *** 164
-10000000000099 *** 150
- finished!
-racket@> (search-for-primes 100000000000000 3)
-
-100000000000031 *** 473
-100000000000067 *** 465
-100000000000097 *** 464
- finished!
-racket@> (search-for-primes 1000000000000000 3)
-
-1000000000000037 *** 1471
-1000000000000091 *** 1479
-1000000000000159 *** 1494
- finished!
-racket@> (search-for-primes 10000000000000000 3)
-
-10000000000000061 *** 4644
-10000000000000069 *** 4766
-10000000000000079 *** 4630
+1009 *** 0.
+1013 *** 0.
+1019 *** 0.
  finished!
 
-; La razón de la velocidad de los dos algoritmos es aproximadamente 2:1 
-; es decir, un poco menos del doble de velocidad
+(search-for-primes 10000 3)
+
+10007 *** 0.
+10009 *** 9.999999999990905e-3
+10037 *** 0.
+ finished!
+
+(search-for-primes 100000 3)
+
+100003 *** .01999999999998181
+100019 *** .01999999999998181
+100043 *** .01999999999998181
+ finished!
+
+(search-for-primes 1000000 3)
+
+1000003 *** .16000000000008185
+1000033 *** .14999999999997726
+1000037 *** .15999999999996817
+ finished!
+
+(search-for-primes 10000000 3)
+
+10000019 *** 1.5100000000001046
+10000079 *** 1.509999999999991
+10000103 *** 1.5499999999999545
+ finished!
+
+(search-for-primes 100000000 3)
+
+100000007 *** 15.449999999999932
+100000037 *** 15.569999999999936
+100000039 *** 15.509999999999991
+ finished!
+
+; The rate between this and previous algorithm is 2:1

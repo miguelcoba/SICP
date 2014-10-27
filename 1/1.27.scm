@@ -11,7 +11,7 @@
 (define (fermat-test n)
   (define  (try-it a)
     (= (expmod a n n) a))
-  (try-it (+ 1 (random (- (min n 4294967087) 1)))))
+  (try-it (+ 1 (random (- n 1)))))
 
 (define (fast-prime? n times)
   (cond ((= times 0) true)
@@ -20,17 +20,17 @@
 
 ; Desmonstrate that the Carmichael numbers listed fool the Fermat test
 
-racket@> (fast-prime? 561 5)
+(fast-prime? 561 5)
 #t
-racket@> (fast-prime? 1105 5)
+(fast-prime? 1105 5)
 #t
-racket@> (fast-prime? 1729 5)
+(fast-prime? 1729 5)
 #t
-racket@> (fast-prime? 2465 5)
+(fast-prime? 2465 5)
 #t
-racket@> (fast-prime? 2821 5)
+(fast-prime? 2821 5)
 #t
-racket@> (fast-prime? 6601 5)
+(fast-prime? 6601 5)
 #t
 
 ; Test all a from 1 to n - 1

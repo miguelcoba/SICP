@@ -3,7 +3,7 @@
 (define (even? n)
   (= (remainder n 2) 0))
 
-(define (runtime) (current-milliseconds))
+;(define (runtime) (current-milliseconds))
 
 (define (expmod base exp m)
   (cond ((= exp 0) 1)
@@ -13,7 +13,7 @@
 (define (fermat-test n)
   (define  (try-it a)
     (= (expmod a n n) a))
-  (try-it (+ 1 (random (- (min n 4294967087) 1)))))
+  (try-it (+ 1 (random (- n 1)))))
 
 (define (fast-prime? n times)
   (cond ((= times 0) true)
@@ -37,61 +37,53 @@
 (define (search-for-primes from how-many)
   (define (iter from how-many)
     (cond ((= how-many 0) (display "\n finished!\n"))
-	  ((even? from) (iter (+ from 1) how-many)); Si es par entonces no es primo y buscamos el siguiente impar
-	  ((timed-prime-test from) (iter (+ from 2) (- how-many 1))) ; Si es primo, es uno menos por buscar, y probamos el siguiente impar (un primo nunca es par)
-	  (else (iter (+ from 2) how-many)))) ; Buscamos el siguiente impar
+	  ((even? from) (iter (+ from 1) how-many)); If it is even, then is not prime and we search for the nex odd number
+	  ((timed-prime-test from) (iter (+ from 2) (- how-many 1))) ; If it is prime, it is one less to find and we try the next odd number (a prime is never even)
+	  (else (iter (+ from 2) how-many)))) ; Find next odd number
   (iter from how-many))
 
-; Resultados para 1e11 hasta 1e16
-racket@> (search-for-primes 1000000000000000000000 3)
+; Output
+(search-for-primes 1000 3)
 
-1000000000000000000117 *** 8
-1000000000000000000193 *** 8
-1000000000000000000213 *** 11
- finished!
-racket@> (search-for-primes 1000000000000000000000000 3)
-
-1000000000000000000000007 *** 9
-1000000000000000000000049 *** 9
-1000000000000000000000121 *** 9
- finished!
-racket@> (search-for-primes 1000000000000000000000000000 3)
-
-1000000000000000000000000103 *** 10
-1000000000000000000000000279 *** 10
-1000000000000000000000000283 *** 14
- finished!
-racket@> (search-for-primes 1000000000000000000000000000000 3)
-
-1000000000000000000000000000057 *** 11
-1000000000000000000000000000099 *** 14
-1000000000000000000000000000211 *** 14
- finished!
-racket@> (search-for-primes 1000000000000000000000000000000000 3)
-
-1000000000000000000000000000000061 *** 16
-1000000000000000000000000000000249 *** 12
-1000000000000000000000000000000283 *** 16
- finished!
-racket@> (search-for-primes 1000000000000000000000000000000000000000000 3)
-
-1000000000000000000000000000000000000000063 *** 19
-1000000000000000000000000000000000000000169 *** 16
-1000000000000000000000000000000000000000361 *** 19
- finished!
-racket@> (search-for-primes 1000000000000000000000000000000000000000000000 3)
-
-1000000000000000000000000000000000000000000009 *** 20
-1000000000000000000000000000000000000000000121 *** 20
-1000000000000000000000000000000000000000000301 *** 21
- finished!
-racket@> (search-for-primes 1000000000000000000000000000000000000000000000000 3)
-
-1000000000000000000000000000000000000000000000193 *** 18
-1000000000000000000000000000000000000000000000217 *** 21
-1000000000000000000000000000000000000000000000451 *** 21
+1009 *** 0.
+1013 *** 0.
+1019 *** 0.
  finished!
 
-; Por cada orden de magnitud, aumenta un tiempo constante
-; En nuestro caso es un millisegundo por cada 3 órdenes de magnitud
-; por tanto el crecimiento es O(log n)
+(search-for-primes 10000 3)
+
+10007 *** 0.
+10009 *** 0.
+10037 *** 0.
+ finished!
+
+(search-for-primes 100000 3)
+
+100003 *** 0.
+100019 *** 0.
+100043 *** 0.
+ finished!
+
+(search-for-primes 1000000 3)
+
+1000003 *** 0.
+1000033 *** 0.
+1000037 *** 0.
+ finished!
+
+(search-for-primes 10000000 3)
+
+10000019 *** 0.
+10000079 *** 0.
+10000103 *** 0.
+ finished!
+
+(search-for-primes 1000000000 3)
+
+1000000007 *** 0.
+1000000009 *** 0.
+1000000021 *** 0.
+ finished!
+
+; Time is constant for each order of magnitude
+; so order of growth is O(log n)

@@ -3,7 +3,7 @@
 (define (even? n)
   (= (remainder n 2) 0))
 
-(define (runtime) (current-milliseconds))
+;(define (runtime) (current-milliseconds))
 
 (define (fast-expt b n)
   (cond ((= n 0) 1)
@@ -16,7 +16,7 @@
 (define (fermat-test n)
   (define  (try-it a)
     (= (expmod a n n) a))
-  (try-it (+ 1 (random (- (min n 4294967087) 1)))))
+  (try-it (+ 1 (random (- n 1)))))
 
 (define (fast-prime? n times)
   (cond ((= times 0) true)
@@ -45,26 +45,30 @@
 	  (else (iter (+ from 2) how-many)))) ; Buscamos el siguiente impar
   (iter from how-many))
 
-; Resultados para 1e3 hsata 1e5
-racket@> (search-for-primes 1000 3)
+; Output
+(search-for-primes 1000 3)
 
-1009 *** 3
-1013 *** 1
-1019 *** 1
+1009 *** 0.
+1013 *** 0.
+1019 *** 1.0000000000005116e-2
  finished!
-racket@> (search-for-primes 10000 3)
 
-10007 *** 26
-10009 *** 27
-10037 *** 29
- finished!
-racket@> (search-for-primes 100000 3)
+(search-for-primes 10000 3)
 
-100003 *** 1280
-100019 *** 1258
-100043 *** 1098
+10007 *** .00999999999999801
+10009 *** .00999999999999801
+10037 *** .01999999999999602
  finished!
-racket@> 
+
+
+(search-for-primes 100000 3)
+
+100003 *** 2.1300000000000026
+100019 *** 2.1199999999999974
+100043 *** 1.8900000000000006
+ finished!
+
+(search-for-primes 1000000 3)
 
 ; Produce los mismos resultados pero es muchisimo más lento
 ; probablemetne porque expmod original llama reminder muchas veces sobre valores pequeños
