@@ -11,7 +11,7 @@
 (define (simpson-rule f a b n)
   (define h (/ (- b a) n))
   (define (y k) (f (+ a (* k h))))
-  (define (coef k)  ; Calcula el coeficiente para el término k
+  (define (coef k)  ; Calculates Yk coeficient
     (cond ((= k 0) 1)
 	  ((= k n) 1)
 	  ((even? k) 2)

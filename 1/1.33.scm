@@ -23,12 +23,12 @@
 (define (prime? n)
   (= n (smallest-divisor n)))
 
-; a suma de cuadrados de los números primos entra a y b
+; a sum of squares of the prime numbers in the interval a to b
 (define (sum-squared-primes a b)
   (filtered-accumulate + 0 square a inc b prime?))
 
-; b producto de todos los enteros positivos menores a n que son primos 
-; relativos de n (all positive integers i < n such that GCD(i, n) = 1
+; b product of all the positive integers less than n that are relatively prime
+; to n (i.e all positive integers i < n such that GCD(i, n) = 1
 (define (gcd a b)
   (if (= b 0)
       a

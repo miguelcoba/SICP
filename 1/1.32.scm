@@ -1,3 +1,5 @@
+; accumulate 
+; iterative process
 (define (accumulate combiner null-value term a next b)
   (define (iter a result)
     (if (> a b)
@@ -13,7 +15,6 @@
 (define (product term a next b)
   (accumulate * 1 term a next b))
 
-
 (define (identity x) x)
 
 (define (inc x) (+ x 1))
@@ -27,14 +28,13 @@
   (product identity a inc b))
 
 ; test
-racket@> (sum-integers 1 10)
+(sum-integers 1 10)
 55
-racket@> (product-integers 1 10)
+(product-integers 1 10)
 3628800
-racket@> 
 
-; accumulate genera un proceso iterativo.
-; convertido a proceso recursivo
+; accumulate 
+; recursive process
 (define (accumulate combiner null-value term a next b)
     (if (> a b)
 	null-value
