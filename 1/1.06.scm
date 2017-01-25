@@ -16,7 +16,7 @@
 ; evaluate all the operands before applying the operator to the
 ; values of the arguments.
 ; In the case of sqrt-iter, the evalutaion of the new-if evaluates the
-; three subexpressions, and when evaluation the third one:
+; three subexpressions, and when evaluating the third one:
 ;  (sqrt-iter (improve guess x) x)
 ; it call itself again, resulting in an infinite recursive non-ending
 ; call to sqrt-iter. The method never returns a value.

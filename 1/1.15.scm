@@ -5,7 +5,7 @@
       angle
       (p (sine (/ angle 3.0)))))
 
-; a) p is applied 5 times
+;; a) p is applied 5 times
 (sine 12.15)
 (p (sine (/ 12.15 3.0)))
 (p (sine 4.05))
@@ -24,7 +24,10 @@
 (p -0.78956)
 -0.39980
 
-; b)
- Order of growth
-  space: O(log a)
-  steps: O(log a)
+;; b)
+;; Order of growth
+;; Steps: Each application of p divides by 3 the argument a, so this is a log3(a) [similar to when an algorithm halves the argument we have log2(n), e.g. binary tree]
+;;  O(log a)
+;;
+;; Space: the space is linear to the number of steps, so if one is log3(n) the other is too
+;;  O(log a)

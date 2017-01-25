@@ -18,7 +18,7 @@
 	((fermat-test n) (fast-prime? n (- times 1)))
 	(else false)))
 
-; Desmonstrate that the Carmichael numbers listed fool the Fermat test
+; Demonstrate that the Carmichael numbers listed fool the Fermat test
 
 (fast-prime? 561 5)
 #t
@@ -41,13 +41,13 @@
 	(else false)))
   (test-it 1 n))
 
-racket@> (fermat-test2 1105)
+(fermat-test2 1105)
 #t
-racket@> (fermat-test2 1729)
+(fermat-test2 1729)
 #t
-racket@> (fermat-test2 2465)
+(fermat-test2 2465)
 #t
-racket@> (fermat-test2 2821)
+(fermat-test2 2821)
 #t
-racket@> (fermat-test2 6601)
+(fermat-test2 6601)
 #t

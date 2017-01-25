@@ -21,8 +21,7 @@
 
 (define (start-prime-test n start-time)
   (if (prime? n) 
-      (report-prime n (- (runtime) start-time))
-      false))
+      (report-prime n (- (runtime) start-time))))
 
 (define (report-prime n elapsed-time)
   (newline)
@@ -39,12 +38,14 @@
   (iter from how-many))
 
 ; Output
+
 (search-for-primes 1000 3)
 
 1009 *** 0.
 1013 *** 0.
 1019 *** 0.
  finished!
+;Unspecified return value
 
 (search-for-primes 10000 3)
 
@@ -52,34 +53,95 @@
 10009 *** 0.
 10037 *** 0.
  finished!
+;Unspecified return value
 
 (search-for-primes 100000 3)
 
-100003 *** 2.9999999999972715e-2
-100019 *** 2.9999999999972715e-2
-100043 *** 3.0000000000086402e-2
+100003 *** 0.
+100019 *** 0.
+100043 *** 0.
  finished!
+;Unspecified return value
 
 (search-for-primes 1000000 3)
 
-1000003 *** .31999999999993634
-1000033 *** .3100000000000591
-1000037 *** .30999999999994543
+1000003 *** 0.
+1000033 *** 0.
+1000037 *** 0.
  finished!
+;Unspecified return value
 
 (search-for-primes 10000000 3)
 
-10000019 *** 3.130000000000109
-10000079 *** 3.0599999999999454
-10000103 *** 3.009999999999991
+10000019 *** 0.
+10000079 *** 0.
+10000103 *** 1.0000000000019327e-2
  finished!
+;Unspecified return value
 
 (search-for-primes 100000000 3)
 
-100000007 *** 30.31000000000006
-100000037 *** 30.409999999999968
-100000039 *** 30.100000000000023
+100000007 *** 9.999999999990905e-3
+100000037 *** 2.0000000000010232e-2
+100000039 *** 9.999999999990905e-3
  finished!
+;Unspecified return value
 
-; Do your timing data bear this out? No. It takes 10 times for each order of magnitude increment
+(search-for-primes 1000000000 3)
+
+1000000007 *** .03999999999999204
+1000000009 *** 4.0000000000020464e-2
+1000000021 *** .04999999999998295
+ finished!
+;Unspecified return value
+
+(search-for-primes 10000000000 3)
+
+10000000019 *** .12000000000000455
+10000000033 *** .12999999999999545
+10000000061 *** .12000000000000455
+ finished!
+;Unspecified return value
+
+(search-for-primes 100000000000 3)
+
+100000000003 *** .38999999999998636
+100000000019 *** .39999999999997726
+100000000057 *** .38999999999998636
+ finished!
+;Unspecified return value
+
+(search-for-primes 1000000000000 3)
+
+1000000000039 *** 1.2199999999999989
+1000000000061 *** 1.2300000000000182
+1000000000063 *** 1.25
+ finished!
+;Unspecified return value
+
+(search-for-primes 10000000000000 3)
+
+10000000000037 *** 3.930000000000007
+10000000000051 *** 3.8899999999999864
+10000000000099 *** 3.8799999999999955
+ finished!
+;Unspecified return value
+
+(search-for-primes 100000000000000 3)
+
+100000000000031 *** 12.320000000000022
+100000000000067 *** 12.349999999999966
+100000000000097 *** 12.389999999999986
+ finished!
+;Unspecified return value
+
+(search-for-primes 1000000000000000 3)
+
+1000000000000037 *** 40.06999999999999
+1000000000000091 *** 39.77000000000001
+1000000000000159 *** 39.329999999999984
+ finished!
+;Unspecified return value
+
+; Do your timing data bear this out? yes, each order of magnitude increase (x10) takes aprox sqrt(10)=3.16 times more
 

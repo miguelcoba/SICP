@@ -6,10 +6,10 @@
 
 (define (p a b c) 
   (if (> a b) 
-    (if (> b c)
-      (sum-square a b) 
-      (sum-square a c)) 
-    (if (> a c) 
-      (sum-square b a) 
-      (sum-square b c))))
+      (if (> b c)
+	  (sum-square a b) 
+	  (sum-square a c)) 
+      (if (> a c) 
+	  (sum-square b a) 
+	  (sum-square b c))))
 
