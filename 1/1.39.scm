@@ -5,8 +5,8 @@
 	(term n d (- k 1) (/ (n k)(+ (d k) result)))))
   (term n d k 0))
 
-; formulas
-n  v  formula
+; formula
+i  n  formula
 -  -  -------
 1  1   2*n-1 
 2  3   2*n-1

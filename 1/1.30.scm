@@ -12,3 +12,6 @@
 
 (define (sum-integers a b)
   (sum identity a inc b))
+
+(sum-integers 1 10)
+;Value: 55

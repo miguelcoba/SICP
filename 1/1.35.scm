@@ -1,9 +1,9 @@
 x -> 1 + 1/x
 
-; phi es 
+; phi is
 phi = (1 + sqrt(5))/2
 
-; transformando la equación
+; transforming the equation
 x = 1 + 1/x
 x*x = x*(1 + 1/x)
 x^2 = x + 1
@@ -19,6 +19,6 @@ x1 = (1 + sqrt(5))/2
 x2 = (1 - sqrt(5))/2
 
 (define (golden-ratio)
-  (fixed-point (lambda (phi) (+ 1 (/ 1 phi))) 1.0))
+  (fixed-point (lambda (x) (+ 1 (/ 1 x))) 1.0))
 
 (golden-ratio)

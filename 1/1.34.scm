@@ -7,9 +7,13 @@
 
 (f (lambda (z) (* z (+ z 1))))
 
+;; What happens if we (perversely) ask the interpreter to evaluate the combination (f f)?
 (f f)
+;; applying the definition of f
+(f 2)
+;; applying the definition of f, again
+(2 2)
+;; the value of the operator (first 2) is not a procedure so it can't be applied to the value
+;; of the argument (second 2), so an error will 
 
-; Error porque se pasará un lambda (lambda (x) (x 2)) la cual se aplicará al
-; argumento 2 resultando en ((lambda (x) (x 2)) 2) -> (2 2).
-; 2 no es un procedimiento sino un valor y no puede ser aplicado al argumento 2
 

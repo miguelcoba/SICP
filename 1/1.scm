@@ -256,7 +256,10 @@
 
 (half-interval-method sin 2.0 4.0)
 
-(half-interval-method (lambda (x) (- (* x x x) (* 2 x) 3)) 1.0 2.0)	  
+(half-interval-method (lambda (x)
+			(- (* x x x) (* 2 x) 3))
+		      1.0
+		      2.0)
 
 
 (define tolerance 0.00001)

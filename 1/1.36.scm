@@ -16,18 +16,16 @@
 (define (average a b)
   (/ (+ a b) 2))
 
-; sin average damping
+; without average damping
 (define (x-to-the-x)
   (fixed-point (lambda (x) (/ (log 1000) (log x))) 2.0))
 
-; converge en 64 iteraciones
+; converges in 64 steps
 (x-to-the-x)
 
-; con average damping
+; with average damping
 (define (x-to-the-x-damping)
   (fixed-point (lambda (x) (average x (/ (log 1000) (log x)))) 2.0))
 
-; converge en 9 iteraciones
+; converges in 9 steps
 (x-to-the-x-damping)
-
-(

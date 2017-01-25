@@ -20,3 +20,8 @@
     (* (coef k) (y k)))
   (* (/ h 3) (sum term 0 inc n)))
     
+(simpson-rule cube 0 1.0 100)
+;Value: .24999999999999992
+
+(simpson-rule cube 0 1.0 1000)
+;Value: .2500000000000003
