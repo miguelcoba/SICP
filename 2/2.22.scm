@@ -10,8 +10,8 @@
   (iter items '()))
 
 ; evaluating
-racket@> (square-list (list 1 2 3 4))
-'(16 9 4 1)
+(square-list (list 1 2 3 4))
+(16 9 4 1)
 
 ; Produces the answer in reverse order because it recurses over
 ; the cdr of the items on each iteration until the list is empty. In
@@ -39,8 +39,8 @@ racket@> (square-list (list 1 2 3 4))
   (iter items '()))
 
 ; evaluating
-racket@> (square-list (list 1 2 3 4))
+(square-list (list 1 2 3 4))
 '((((() . 1) . 4) . 9) . 16)
 
-; This doesn't work because now it conses the answer of each iteration
-; to the value of the next, nesting lists in  each step
+; This doesn't work because now it conses the answer (a list) of each iteration
+; with the next value, instead of a value with a list.

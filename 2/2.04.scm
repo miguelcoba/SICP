@@ -11,11 +11,11 @@
 
 (cdr (cons 3 5))
 
-; using substition model
+; using substitution model
 
-(cdr (cons 3 5))
-(cdr (lambda (m) (m 3 5)))
-((lambda (m) (m 3 5)) (lambda (p q) q))
-((lambda (p q) q) 3 5)
-5
+(cdr (cons x y))
+(cdr (lambda (m) (m x y)))
+((lambda (m) (m x y)) (lambda (p q) q))
+((lambda (p q) q) x y)
+y
 

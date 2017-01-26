@@ -26,6 +26,7 @@
   (display (y-point p))
   (display ")"))
 
+;; test
 (define p1 (make-point 1 3))
 
 (define p2 (make-point 3 5))
@@ -33,3 +34,5 @@
 (define s (make-segment p1 p2))
 
 (define m (midpoint-segment s))
+
+(print-point m)

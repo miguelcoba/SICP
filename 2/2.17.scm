@@ -16,5 +16,5 @@
 ; Using a single procedure
 (define (last-pair l)
   (if (null? (cdr l))
-      (list (car l))
+      l
       (last-pair (cdr l))))
