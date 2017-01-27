@@ -391,3 +391,12 @@
 			   (edge2-frame frame))))))
 
 ((frame-coord-map a-frame) (make-vect 0 0))
+
+(define (segments->painter segment-list)
+  (lambda (frame)
+    (for-each
+     (lambda (segment)
+       (draw-line
+	((frame-coord-map frame) (start-segment segment))
+	((frame-coord-map frame) (start-segment segment))))
+     segment-list)))
