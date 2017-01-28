@@ -1,4 +1,4 @@
-; 2 Building Abstractions with Data
+;; 2 Building Abstractions with Data
 
 (define (linear-combination a b x y)
   (+ (* a x) (* b y)))
@@ -6,9 +6,9 @@
 (define (linear-combination a b x y)
   (add (mul a x) (mul b y)))
 
-; 2.1 Introduction to Data Abstraction
+;; 2.1 Introduction to Data Abstraction
 
-; 2.1.1 Example: Arithmetic Operations for Rational Numbers
+;; 2.1.1 Example: Arithmetic Operations for Rational Numbers
 
 (define (add-rat x y)
   (make-rat (+ (* (numer x) (denom y))
@@ -31,6 +31,10 @@
 (define (equal-rat? x y)
   (= (* (numer x) (denom y))
      (* (numer y) (denom x))))
+
+;; Pairs
+
+;; Representing rational numbers
 
 (define (make-rat n d) (cons n d))
 
@@ -66,9 +70,9 @@
   (let ((g (gcd n d)))
     (cons (/ n g) (/ d g))))
 
-; 2.1.2 Abstraction Barriers
+;; 2.1.2 Abstraction Barriers
 
-; 2.1.3 What is Meant by Data?
+;; 2.1.3 What is Meant by Data?
 
 (define (cons x y)
   (define (dispatch m)
@@ -81,7 +85,7 @@
 
 (define (cdr z) (z 1))
 
-; 2.1.4 Extended Exercise: Interval Arithmetic
+;; 2.1.4 Extended Exercise: Interval Arithmetic
 
 (define (add-interval x y)
   (make-interval (+ (lower-bound x) (lower-bound y))
@@ -119,11 +123,13 @@
 		  (add-interval (div-interval one r1)
 				(div-interval one r2)))))
 
-; 2.2 Hierarchical Data and the Closure Property
+;; 2.2 Hierarchical Data and the Closure Property
 
-; 2.2.1 Representing Sequences
+;; 2.2.1 Representing Sequences
 
 (define one-through-four (list 1 2 3 4))
+
+;; List operations
 
 (define (list-ref items n)
   (if (= n 0)
@@ -157,6 +163,7 @@
 
 (append (list 1 2 3) (list 4 5 6))
 
+;; Mapping over lists
 
 (define (scale-list items factor)
   (if (null? items)
@@ -183,7 +190,7 @@
 
 (scale-list (list 1 2 3 4 5) 10)
 
-; 2.2.2 Hierarchical Structures
+;; 2.2.2 Hierarchical Structures
 
 (cons (list 1 2) (list 3 4))
 
@@ -203,6 +210,8 @@
 	(else (+ (count-leaves (car x))
 		 (count-leaves (cdr x))))))
 
+;; Mapping over trees
+
 (define (scale-tree tree factor)
   (cond ((null? tree) '())
 	((not (pair? tree)) (* tree factor))
@@ -219,7 +228,7 @@
 	     (* sub-tree factor)))
        tree))
 
-; 2.2.3 Sequences as Conventional Interfaces
+;; 2.2.3 Sequences as Conventional Interfaces
 
 (define nil '())
 
@@ -239,6 +248,8 @@
 	      (cons f (next (+ k 1)))
 	      (next (+ k 1))))))
   (next 0))
+
+;; Sequence Operations
 
 (define (filter predicate sequence)
   (cond ((null? sequence) nil)
@@ -295,6 +306,8 @@
 	      (map salary
 		   (filter programmer? records))))
 
+;; Nested Mappings
+
 (accumulate append
 	    nil
 	    (map (lambda (i)
@@ -332,7 +345,9 @@
 (define (remove item sequence)
   (filter (lambda (x) (not (= x item))) sequence))
 
-; 2.2.4 Example: A Picture Language
+;; 2.2.4 Example: A Picture Language
+
+;; The picture language
 
 (define wave2 (beside wave (flip-vert wave)))
 (define wave4 (below wave2 wave2))
@@ -365,6 +380,8 @@
     (let ((half (beside (flip-horiz quarter) quarter)))
       (below (flip-vert half) half))))
 
+;; Higher-order operations
+
 (define (square-of-four tl tr bl br)
   (lambda (painter)
     (let ((top (beside (tl painter) (tr painter)))
@@ -381,6 +398,8 @@
 				  rotate180 flip-vert)))
     (combine4 (corner-split painter n))))
 
+;; Frames
+
 (define (frame-coord-map frame)
   (lambda (v)
     (add-vect
@@ -392,6 +411,8 @@
 
 ((frame-coord-map a-frame) (make-vect 0 0))
 
+;; Painters
+
 (define (segments->painter segment-list)
   (lambda (frame)
     (for-each
@@ -400,6 +421,8 @@
 	((frame-coord-map frame) (start-segment segment))
 	((frame-coord-map frame) (start-segment segment))))
      segment-list)))
+
+;; Transforming and combining painters
 
 (define (transform-painter painter origin corner1 corner2)
   (lambda (frame)
@@ -450,9 +473,11 @@
         (paint-left frame)
         (paint-right frame)))))
 
-; 2.3 Symbolic Data
+;; Levels of language for rubust design
 
-; 2.3.1 Quotation
+;; 2.3 Symbolic Data
+
+;; 2.3.1 Quotation
 
 (define a 1)
 
@@ -477,7 +502,9 @@
 
 (memq 'apple '(x (apple sauce) y apple pear))
 
-; 2.3.2 Example: Symbolic Differentiation
+;; 2.3.2 Example: Symbolic Differentiation
+
+;; The differentiation program with abstract data
 
 (define (deriv exp var)
   (cond ((number? exp) 0)
@@ -494,6 +521,8 @@
 			(deriv (multiplier exp) var))))
 	(else
 	 (error "unknown expression type - - DERIV" exp))))
+
+;; Representing algebraic expressions
 
 (define (variable? x) (symbol? x))
 
@@ -540,7 +569,9 @@
         ((and (number? m1) (number? m2)) (* m1 m2))
         (else (list '* m1 m2))))
 
-; 2.3.3 Example: Representing Sets
+;; 2.3.3 Example: Representing Sets
+
+;; Sets as unordered lists
 
 (define (element-of-set? x set)
   (cond ((null? set) false)
@@ -559,3 +590,24 @@
 	       (intersection-set (cdr set1) set2)))
 	(else (intersection-set (cdr set1) set2))))
 
+;; Sets as ordered lists
+
+(define (element-of-set? x set)
+  (cond ((null? set) false)
+	((= x (car set)) true)
+	((< x (car set)) false)
+	(else (element-of-set? x (cdr set)))))
+
+(define (intersection-set set1 set2)
+  (if (or (null? set1) (null? set2))
+      '()
+      (let ((x1 (car set1))
+	    (x2 (car set2)))
+	(cond ((= x1 x2)
+	       (cons x1 (intersection-set (cdr x1) (cdr x2))))
+	      ((< x1 x2)
+	       (intersection-set (cdr set1) set2))
+	      ((< x2 x1)
+	       (intersection-set set1 (cdr set2)))))))
+	 
+  
