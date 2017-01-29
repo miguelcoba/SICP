@@ -3,7 +3,7 @@
 
 (define (successive-merge set-of-leaves)
   (if (null? (cdr set-of-leaves))
-      set-of-leaves
+      (car set-of-leaves)
       (successive-merge (adjoin-set (make-code-tree (car set-of-leaves) (cadr set-of-leaves))
 				    (cddr set-of-leaves)))))
 
