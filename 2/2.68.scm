@@ -33,3 +33,17 @@
 
 (encode-symbol 'e sample-tree)
 ;unknown symbol -- ENCODE-SYMBOL e
+
+
+;; encoding result of 2.67
+sample-message
+;Value: (0 1 1 0 0 1 0 1 0 1 1 1 0)
+
+(decode sample-message sample-tree)
+;Value: (a d a b b c a)
+
+(encode '(a d a b b c a) sample-tree)
+;Value: (0 1 1 0 0 1 0 1 0 1 1 1 0)
+
+
+

@@ -712,7 +712,7 @@
       '()
       (let ((pair (car pairs)))
 	(adjoin-set (make-leaf (car pair) ; symbol
-			       (cdr pair)) ; frequency
+			       (cadr pair)) ; frequency
 		    (make-leaf-set (cdr pairs))))))
 
 
