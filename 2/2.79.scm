@@ -6,7 +6,7 @@
 
 (define (install-equ-rational-package)
   (define (equ? x y)
-    (= (* (numer x) (denom y)) (* (numer y) (denom x))))
+    (= (* (number x) (denom y)) (* (number y) (denom x))))
   (put 'equ? '(rational rational) equ?)
   'done)
 
