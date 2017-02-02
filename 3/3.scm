@@ -150,3 +150,12 @@
   (+ (square x) (square y)))
 (define (f a)
   (sum-of-squares (+ a 1) (* a 2)))
+
+;; 3.2.3 Frames as the Repository of Local State
+
+(define (make-withdraw balance)
+  (lambda (amount)
+    (if (>= balance amount)
+        (begin (set! balance (- balance amount))
+               balance)
+        "Insufficient funds")))
