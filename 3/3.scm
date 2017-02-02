@@ -137,3 +137,16 @@
 (define W2 (make-simplified-withdraw 25))
 
 ;; Pitfalls of imperative programming
+
+;; 3.2 The Environment Model of Evaluation
+
+;; 3.2.1 The Rules for Evaluation
+
+;; 3.2.2 Applyting Simple Procedures
+
+(define (square x)
+  (* x x))
+(define (sum-of-squares x y)
+  (+ (square x) (square y)))
+(define (f a)
+  (sum-of-squares (+ a 1) (* a 2)))
