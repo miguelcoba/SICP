@@ -172,3 +172,16 @@
         guess
         (sqrt-iter (improve guess))))
   (sqrt-iter 1.0))
+
+;; 3.3 Modeling with Mutable Data
+
+;; 3.3.1 Mutable List Structure
+
+(define x '((a b) c d))
+
+(define y '(e f))
+
+(set-car! x y)
+
+(set-cdr! x y)
+
