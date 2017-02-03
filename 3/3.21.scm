@@ -19,9 +19,7 @@
 ;; moved at all when deleting, so it remains pointing the last element of the queue: the b
 
 (define (print-queue queue)
-  (if (empty-queue? queue)
-      '()
-      (front-ptr queue)))
+  (display (front-ptr queue)))
 
 (print-queue q1)
 ;Value: ()
