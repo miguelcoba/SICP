@@ -13,7 +13,7 @@
 	  ((and (has-value? b) (has-value? c))
 	   ;; c = (a + b)/2, 2c = a + b, a = 2c - b
 	   (set-value! a
-		       (- (* 2 (get-value c) (get-value b))
+		       (- (* 2 (get-value c)) (get-value b))
 		       me))))
   (define (process-forget-value)
     (forget-value! c me)
