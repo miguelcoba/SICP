@@ -733,3 +733,10 @@
   ((connector 'forget) retractor))
 (define (connect connector new-constraint)
   ((connector 'connect) new-constraint))
+
+;; 3.4 Concurrency: Time Is of the Essence
+
+;; 3.4.1 The Nature of Time in Concurrent Systems
+
+;; Correct behavior of concurrent programs
+
