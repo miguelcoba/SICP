@@ -993,3 +993,43 @@
 	      (make-tableau transform s)))
 
 (display-stream (accelerated-sequence euler-transform pi-stream))
+
+;; Infinite stream of pairs
+
+(stream-filter (lambda (pair)
+		 (prime? (+ (car pair) (cadr pair))))
+	       int-pairs)
+
+(stream-map (lambda (x) (list (stream-car s) x))
+	    (stream-cdr t))
+
+(define (pairs s t)
+  (cons-stream
+   (list (stream-car s) (stream-car t))
+   (interleave
+    (stream-map (lambda (x) (list (stream-car s) x))
+	    (stream-cdr t))
+    (pairs (stream-cdr s) (stream-cdr t)))))
+
+(define (stream-append s1 s2)
+  (if (stream-null? s1)
+      s2
+      (cons-stream (stream-car s1)
+                   (stream-append (stream-cdr s1) s2))))
+
+(define (interleave s1 s2)
+  (if (stream-null? s1)
+      s2
+      (cons-stream (stream-car s1)
+		   (interleave s2 (stream-cdr s1)))))
+
+(define int-pairs (pairs integers integers))
+
+;; Streams as signals
+
+(define (integral integrand initial-value dt)
+  (define int
+    (cons-stream initial-value
+		 (add-streams (scale-stream integrand dt)
+			      int)))
+  int)
