@@ -1,5 +1,5 @@
-; 1.1 The Elements of Programming
-; 1.1.7 Example: Square Roots by Newton's Method
+;; 1.1 The Elements of Programming
+;; 1.1.7 Example: Square Roots by Newton's Method
 
 (define (square x)
    (* x x))
@@ -23,5 +23,3 @@
 
 (define (sqrt x)
   (sqrt-iter 1.0 x))
-
-
