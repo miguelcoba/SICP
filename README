@@ -1,10 +1,41 @@
 Exercises of the SICP book.
 
 Structure and Interpretation of Computer Programs
+
 http://mitpress.mit.edu/sicp/
 
-Version 2.0 - 20241117
-Version 1.0 - 2012
+# Versions
+
+2.0 - 20241117
+1.0 - 2012
+
+# Setup
+
+## emacs
+brew install mit-scheme
+brew install emacs
+
+## packages
+M-x package-initialize
+M-x package-refresh-contents
+M-x package-install RET magit RET
+M-x package-install RET geiser-mit RET
+
+# macOS M3
+
+`geiser` does not work for Emacs in macOS Sequoia 15.1.1
+
+Solution: Run Emacs on a Docker container (Ubuntu 22.04, with linux/amd64 arch)
+
+```
+# Build image for amd64
+./build-docker-emacs.sh
+
+# Run container
+./docker-emacs.sh
+```
+
+# Resources
 
 I learned a lot from the following people/sites:
 
