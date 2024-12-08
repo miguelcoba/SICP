@@ -107,3 +107,5 @@
 	((= kinds-of-coins 5) 50)))
 
 (count-change 100)
+
+;; 1.2.3 Orders of Growth
